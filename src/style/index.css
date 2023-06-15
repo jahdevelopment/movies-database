@@ -1,0 +1,48 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  background-color: #0A4D68;
+  min-height: 100vh;
+  color: #05BFDB
+  /* color: #00FFCA; */
+}
+
+.navbar {
+  background-color: #05BFDB;
+  
+}
+
+.navbar-brand {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+align-content: center;
+gap: 10px;
+margin-right: 50px;
+}
+
+.container {
+  min-width: 900px;
+  color: #05BFDB;
+  padding-top: 80px;
+}
+
+.sort {
+  margin: 20px;
+}
+
+.card {
+  width: 15rem;
+  margin: 10px;
+  background-color: #05BFDB;
+}
+
+.favorite-title {
+  margin: 40px;
+}
