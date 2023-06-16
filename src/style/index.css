@@ -9,12 +9,12 @@
   background-color: #0A4D68;
   min-height: 100vh;
   color: #05BFDB
-  /* color: #00FFCA; */
 }
 
 .navbar {
   background-color: #05BFDB;
-  
+  position: absolute fixed;
+  padding: 10px;
 }
 
 .navbar-brand {
@@ -25,24 +25,37 @@ align-items: center;
 align-content: center;
 gap: 10px;
 margin-right: 50px;
+padding: 0;
 }
 
 .container {
   min-width: 900px;
   color: #05BFDB;
-  padding-top: 80px;
+  position: relative;
+  top: 90px;
 }
 
 .sort {
-  margin: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
 }
 
 .card {
   width: 15rem;
   margin: 10px;
   background-color: #05BFDB;
+  padding: 5px;
 }
 
-.favorite-title {
-  margin: 40px;
+.card-img-movie {
+  width: 100%;
+  border-radius: 7px;
+}
+
+h6 {
+  text-align: none;
+}
+
+.list-title {
+  margin: 20px;
 }

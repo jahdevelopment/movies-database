@@ -6,8 +6,8 @@ import axios from "axios";
 
 const apiKey = "32fba61adda7634622096950aa45f404";
 
-function TvShows() {
-  const [tvShows, setTvShows] = useState([]);
+function HomePage() {
+  const [movies, setMovies] = useState([]);
   const [sort, setSort] = useState("Most Popular");
   const [query, setQuery] = useState("popular");
 
@@ -15,7 +15,7 @@ function TvShows() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/discover/tv`,
+          `https://api.themoviedb.org/3/movie/${query}`,
           {
             params: {
               api_key: apiKey,
@@ -24,7 +24,7 @@ function TvShows() {
             },
           }
         );
-        setTvShows(response.data.results);
+        setMovies(response.data.results);
       } catch (error) {
         console.log(error);
       }
@@ -35,10 +35,10 @@ function TvShows() {
 
   return (
     <>
-    <Header />
-    <div className="container">
+      <Header />
+      <div className="container">
         <SearchInput
-          title="Search for Tv Show"
+        title="Search for a Movie" 
         />
         <div className="col sort m-4 p-4">
           <h2>Or Sort by:</h2>
@@ -62,11 +62,11 @@ function TvShows() {
           >
             Upcoming
           </button>
-          <Catalogue pageTitle={sort} movies={tvShows} />
+          <Catalogue pageTitle={sort} movies={movies} />
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default TvShows;
+export default HomePage;
