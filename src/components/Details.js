@@ -13,7 +13,7 @@ function Details() {
   useEffect(() => {
     if (localStorage.getItem(id)) setValue(true);
     axios
-      .get(`https://api.themoviedb.org/3/movie/${id}/images`, {
+      .get(`https://api.themoviedb.org/3/${movie}/${id}`, {
         params: {
           api_key: apiKey,
           language: "en-CA",
@@ -21,7 +21,7 @@ function Details() {
       })
       .then((response) => {
         setMovie(response.data);
-        console.log(response.data);
+        console.log(movie);
       })
       .catch((error) => {
         console.log(error);
@@ -43,12 +43,16 @@ function Details() {
       <Header />
       <div className="container">
         <h1>Details</h1>
-        <img src={`https://image.tmdb.org/t/p/original${movie.image}`} className="card-img-movie" alt="..." />
+        <img 
+          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+          className="card-img-movie" 
+          alt={movie.title} 
+         />
         <h1>{movie.title}</h1>
-        <h3>{movie.overview}</h3>
-        <p>{movie.description}</p>
-        <p>{movie.release}</p>
-        <p>{movie.director}</p>
+        <p>{movie.overview}</p>
+        <p>Release Date: {movie.release_date}</p>
+        <p>{movie.homepage}</p>
+        <p>Vote Average: {movie.vote_average}</p>
         <button
           type="button"
           className={`btn btn-outline-light btn-sm ${value ? "active" : ""}`}

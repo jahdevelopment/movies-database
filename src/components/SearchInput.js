@@ -12,7 +12,7 @@ function SearchInput({ title }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchQuery(e.target.elements.search.value);
-  };
+  }; 
 
   useEffect(() => {
     const fetchData = async () => {

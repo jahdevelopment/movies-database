@@ -22,13 +22,13 @@ function Card({ id, image, title, rating }) {
   return (
     <div className="card">
       <div className="card-body col">
-        <Link to={`/details/${id}`}>
+        <Link to={`/details/${id}`} className="text-decoration-none text-body">
           <img
             src={`https://image.tmdb.org/t/p/w500${image}`}
             className="card-img-movie"
             alt="..."
           />
-          <h6 className="show-title">{title}</h6>
+          <h5>{title}</h5>
           <p>{rating}</p>
         </Link>
         <button
@@ -36,7 +36,7 @@ function Card({ id, image, title, rating }) {
           className={`btn btn-outline-light btn-sm ${value ? "active" : ""}`}
           onClick={handleClick}
         >
-          {value ? "Add to favorites" : "Remove from favorites"}
+          {value ? "Remove from favorites" : "Add to favorites"}
         </button>
       </div>
     </div>

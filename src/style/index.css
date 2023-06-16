@@ -5,11 +5,11 @@
   padding: 0;
 }
 
-.App {
+body {
   background-color: #0A4D68;
   max-width: 100%;
   min-height: 100vh;
-  color: #05BFDB
+
 }
 
 .navbar {
@@ -31,7 +31,7 @@ padding: 0;
 
 .container {
   min-width: 900px;
-  color: #05BFDB;
+  color: #fff;
   position: relative;
   top: 90px;
 }
@@ -51,10 +51,6 @@ padding: 0;
 .card-img-movie {
   width: 100%;
   border-radius: 7px;
-}
-
-h6 {
-  text-align: none;
 }
 
 .list-title {
