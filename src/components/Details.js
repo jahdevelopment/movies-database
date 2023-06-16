@@ -1,6 +1,9 @@
 import Header from "./Header";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import axios from "axios";
+
+const apiKey = "32fba61adda7634622096950aa45f404";
 
 function Details() {
   const { id } = useParams();
@@ -9,11 +12,20 @@ function Details() {
 
   useEffect(() => {
     if (localStorage.getItem(id)) setValue(true);
-    fetch(
-      `https://api.themoviedb.org/3/tv/${id}?api_key=32fba61adda7634622096950aa45f404&language=en-CA`
-    )
-      .then((response) => response.json())
-      .then((data) => setMovie(data));
+    axios
+      .get(`https://api.themoviedb.org/3/movie/${id}/images`, {
+        params: {
+          api_key: apiKey,
+          language: "en-CA",
+        },
+      })
+      .then((response) => {
+        setMovie(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [id]);
 
   const handleClick = (e) => {
@@ -31,18 +43,19 @@ function Details() {
       <Header />
       <div className="container">
         <h1>Details</h1>
-        <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} className="card-img-movie" alt="..." />
-        <h1>{movie.original_name}</h1>
+        <img src={`https://image.tmdb.org/t/p/original${movie.image}`} className="card-img-movie" alt="..." />
+        <h1>{movie.title}</h1>
         <h3>{movie.overview}</h3>
-        <p>description</p>
-        <p>Release</p>
-        <p>Director</p>
+        <p>{movie.description}</p>
+        <p>{movie.release}</p>
+        <p>{movie.director}</p>
         <button
-            className={value ? "remove-to-watchlist" : "add-to-watchlist"}
-            onClick={handleClick}
-          >
-            {value ? "- Remove to watchlist" : "+ Add to watchlist"}
-          </button>
+          type="button"
+          className={`btn btn-outline-light btn-sm ${value ? "active" : ""}`}
+          onClick={handleClick}
+        >
+          {value ? "Add to favorites" : "Remove from favorites"}
+        </button>
       </div>
     </>
   );

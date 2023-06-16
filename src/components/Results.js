@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
 import Catalogue from "./Catalogue";
@@ -7,39 +7,43 @@ import axios from "axios";
 const apiKey = "32fba61adda7634622096950aa45f404";
 
 function Results() {
-  const {query} = useParams();
-  const [movies, setMovies] = useState([]);
-  
+  const { searchQuery } = useParams();
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/discover/movie`,
+          `https://api.themoviedb.org/3/search/movie`,
           {
             params: {
               api_key: apiKey,
               language: "en-US",
-              query: query,
+              query: searchQuery,
               page: 1,
             },
           }
         );
-        setMovies(response.data.results);
-       } catch (error) {
+        setSearchResults(response.data.results);
+        console.log(response.data);
+      } catch (error) {
         console.log(error);
       }
     };
 
-    if (query) {
-      fetchData();
-    }
-  }, [query]);
+    fetchData();
+  }, [searchQuery]);
 
   return (
     <>
       <Header />
-      <Catalogue pageTitle="Results" movies={movies} />
+      {searchResults.length > 0 ? (
+        <Catalogue pageTitle="Results" movies={searchResults} />
+      ) 
+      : (
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+          <h2>No movie found, try again!</h2>
+        </div>)}
     </>
   );
 }

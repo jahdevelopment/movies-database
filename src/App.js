@@ -14,7 +14,7 @@ function App() {
         <Route path="/details/:id" element={<Details />} />
         <Route path="/my-favorites" element={<Favorites />} />
         <Route path="/tv-shows" element={<TvShows />} />
-        <Route path="/search" element={<Results />} />
+        <Route path="/:searchQuery" element={<Results />} />
       </Routes>
     </div>
   );
