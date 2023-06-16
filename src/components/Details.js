@@ -11,21 +11,24 @@ function Details() {
   const [value, setValue] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem(id)) setValue(true);
-    axios
+    const fetchData = async () => {
+      try {
+        if (localStorage.getItem(id)) setValue(true);
+    const response = await axios
       .get(`https://api.themoviedb.org/3/movie/${id}`, {
         params: {
           api_key: apiKey,
           language: "en-CA",
         },
-      })
-      .then((response) => {
-        setMovie(response.data);
-        console.log(movie);
-      })
-      .catch((error) => {
-        console.log(error);
       });
+        setMovie(response.data);
+        console.log(response.data);
+      } catch (error){
+        console.log(error);
+      }
+    }
+    
+     fetchData(); 
   }, [id]);
 
   const handleClick = (e) => {
