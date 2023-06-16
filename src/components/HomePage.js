@@ -38,7 +38,8 @@ function HomePage() {
       <Header />
       <div className="container">
         <SearchInput
-        title="Search for a Movie" 
+        title="Search for a Movie"
+        movie="movie"
         />
         <div className="col sort m-4 p-4">
           <h2>Or Sort by:</h2>

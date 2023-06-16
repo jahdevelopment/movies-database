@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 const apiKey = "32fba61adda7634622096950aa45f404";
 
-function SearchInput({ title }) {
+function SearchInput({ title, movie }) {
   const [searchQuery, setSearchQuery] = useState("");
   
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function SearchInput({ title }) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/search/movie`,
+          `https://api.themoviedb.org/3/search/${movie}`,
           {
             params: {
               api_key: apiKey,
@@ -40,10 +40,6 @@ function SearchInput({ title }) {
       fetchData();
     }
   }, [searchQuery]);
-
-  const handleMovieClick = (id) => {
-    navigate(`/details/${id}`);
-  };
 
   return (
     <form onSubmit={handleSubmit}>

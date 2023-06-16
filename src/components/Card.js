@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function Card({ id, image, title, rating }) {
+function Card({ id, image, title, rating, name }) {
   const [value, setValue] = useState(false);
 
   useEffect(() => {
@@ -29,6 +29,7 @@ function Card({ id, image, title, rating }) {
             alt="..."
           />
           <h5>{title}</h5>
+          <h5>{name}</h5>
           <p>{rating}</p>
         </Link>
         <button

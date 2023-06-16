@@ -42,7 +42,7 @@ function Results() {
       ) 
       : (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
-          <h2>No movie found, try again!</h2>
+          <h2>Not found, try again!!</h2>
         </div>)}
     </>
   );

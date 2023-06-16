@@ -15,7 +15,7 @@ function TvShows() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/discover/tv`,
+          `https://api.themoviedb.org/3/tv/${query}`,
           {
             params: {
               api_key: apiKey,
@@ -25,6 +25,7 @@ function TvShows() {
           }
         );
         setTvShows(response.data.results);
+        console.log(response.data.results);
       } catch (error) {
         console.log(error);
       }
@@ -38,7 +39,8 @@ function TvShows() {
     <Header />
     <div className="container">
         <SearchInput
-          title="Search for Tv Show"
+          title="Search for a Tv Show"
+          movie="tv"
         />
         <div className="col sort m-4 p-4">
           <h2>Or Sort by:</h2>
@@ -56,11 +58,11 @@ function TvShows() {
             type="button"
             className="btn btn-outline-info sort"
             onClick={() => {
-              setSort("Upcoming");
-              setQuery("upcoming");
+              setSort("Top Rated");
+              setQuery("top_rated");
             }}
           >
-            Upcoming
+            Top Rated
           </button>
           <Catalogue pageTitle={sort} movies={tvShows} />
         </div>

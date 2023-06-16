@@ -13,7 +13,7 @@ function Details() {
   useEffect(() => {
     if (localStorage.getItem(id)) setValue(true);
     axios
-      .get(`https://api.themoviedb.org/3/${movie}/${id}`, {
+      .get(`https://api.themoviedb.org/3/movie/${id}`, {
         params: {
           api_key: apiKey,
           language: "en-CA",

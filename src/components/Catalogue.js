@@ -11,6 +11,7 @@ function Catalogue({ pageTitle, movies }) {
                 key={movie.id}
                 id={movie.id}
                 title={movie.title}
+                name={movie.name}
                 rating={movie.vote_average}
                 image={movie.poster_path}
               />
